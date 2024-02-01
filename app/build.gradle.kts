@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.todo"
-        minSdk = 16
+        minSdk = 19
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -27,6 +27,9 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding=true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -42,7 +45,8 @@ android {
 dependencies {
     implementation ("androidx.appcompat:appcompat:1.6.1")
     implementation ("androidx.activity:activity-ktx:1.8.2")
-
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-runtime:2.6.1")
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 
@@ -53,10 +57,10 @@ dependencies {
     // Lifecycle components
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-    implementation (")androidx.lifecycle:lifecycle-common-java8:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-common-java8:2.7.0")
 
     // Kotlin components
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.21")
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
@@ -67,7 +71,7 @@ dependencies {
     // Testing
     testImplementation ("junit:junit:4.13.2")
     androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0", {
-    })
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0") {
+    }
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
 }
